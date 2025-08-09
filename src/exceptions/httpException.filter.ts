@@ -14,9 +14,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const statusCode = exception.getStatus();
 
     response.status(statusCode).json({
-      statusCode: statusCode,
+      statusCode: statusCode || 500,
       message: exception.message || 'An error occurred',
-      error: exception.getResponse() || 'Unknown error',
       timestamp: new Date().toISOString(),
     });
   }
